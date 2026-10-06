@@ -9,10 +9,12 @@
 /*   Updated: 2026/10/04 17:24:58 by moalnajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include "ft_printf.h"
 
-void	ft_putchar(char c, unsigned int *count)
+int	ft_putchar(char c, unsigned int *count)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
 	(*count)++;
+	return (1);
 }

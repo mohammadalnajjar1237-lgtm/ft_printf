@@ -6,7 +6,7 @@
 /*   By: moalnajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 11:13:50 by moalnajj          #+#    #+#             */
-/*   Updated: 2026/10/04 18:57:58 by moalnajj         ###   ########.fr       */
+/*   Updated: 2026/10/06 14:35:03 by moalnajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,38 +89,41 @@ static void	choose_base(char b ,char **base)
         *base = "0123456789ABCDEF";
 }
 
-int ft_putnbr_hexa(long n, char b, int *count)
+int ft_putnbr_hexa(unsigned int n, char b, int *count)
 {
     char *base;
     unsigned int base_length;
     char c;
     char *binary;
-    unsigned int nbr;
+    //unsigned int nbr;
 
      choose_base(b, &base);
     base_length = 16;
     if (n < 0)
     {
         n *= -1;
-        nbr = n;
-        binary = turn_binary(nbr);
-       nbr = turn_decimal(binary);
-       nbr = nbr + 1;
+        //nbr = n;
+        binary = turn_binary(n);
+       n = turn_decimal(binary);
+       n = n + 1;
         free(binary);
     }
-    else
-        nbr = n;
-    if (nbr >= base_length)
-        ft_putnbr_hexa(nbr / base_length, b, count);
-    c = base[nbr % base_length];
+    //else
+        //nbr = n;
+    if (n >= base_length)
+        ft_putnbr_hexa(n / base_length, b, count);
+    c = base[n % base_length];
     if (write(1 ,&c, 1) == -1)
     	return (-1);
     (*count)++;
     return (1);
 }
-/*#include <stdio.h>
+#include <stdio.h>
 int main()
 {
-    ft_putnbr_hexa(140723858646256, 'X');
-    printf("\n%c", 63);
-}*/
+	int i = 0;
+    ft_putnbr_hexa(4294967295, 'X', &i);
+    printf("\n");
+    int x = printf("%lX", 4294967295);
+    printf("\n%d %d", i, x);
+}

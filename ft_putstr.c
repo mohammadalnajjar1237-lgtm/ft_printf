@@ -16,8 +16,11 @@ int	ft_putstr(char *s, int *count)
 	if (!s)
 	{
 		if (write(1, "(NULL)", 6) == -1)
+		{
+			*count += 4;
 			return (-1);
-		*count += 4;
+		}
+		
 	}
 	while (*s != '\0')
 	{

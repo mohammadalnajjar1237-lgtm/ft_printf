@@ -6,24 +6,21 @@
 /*   By: moalnajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 11:10:48 by moalnajj          #+#    #+#             */
-/*   Updated: 2026/10/04 19:07:05 by moalnajj         ###   ########.fr       */
+/*   Updated: 2026/10/06 12:45:48 by moalnajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putstr_itoa(char *num, int *count)
+int ft_putstr_itoa(char *num, int *count, int start)
 {
-    int i;
-
-    i = 0;
     write(1, "0x",2);
     *count += 2;
-    while (i < 12)
+    while (start < 100)
     {
-        if (write(1, &num[i], 1) == -1)
+        if (write(1, &num[start], 1) == -1)
         	return (-1);
-        i++;
+        start++;
 	(*count)++;
     }
     return (1);
@@ -31,26 +28,35 @@ int ft_putstr_itoa(char *num, int *count)
 
 int    ft_itoa_p(unsigned long long n, int *count)
 {
-	char	buffer[12];
-	long	nbr;
+	char	buffer[100];
 	int		i;
     char *base = "0123456789abcdef";
 
-	nbr = n;
-	i = 11;
-	while (nbr >= 16)
+	i = 99;
+	if (n == 0)
 	{
-		buffer[i--] = base[nbr % 16] ;
-		nbr = nbr / 16;
+		if (write(1,"(nil)", 5) == -1)
+			return (-1);
+		*count += 5;
+		return (1);
 	}
-	buffer[i--] = base[nbr % 16];
-    return (ft_putstr_itoa(buffer, count));
+	while (n >= 16)
+	{
+		buffer[i--] = base[n % 16] ;
+		n = n / 16;
+	}
+	buffer[i] = base[n % 16];
+    return (ft_putstr_itoa(buffer, count, i));
 }
 /*#include <stdio.h>
 int main()
 {
 	void *s = "hello";
-	void *b = "heyy";
-	ft_itoa_p((unsigned long long)&b);
-	printf("\n%p", &b);
+	//void *b = "heyy";
+	int count = 0;
+	int i = -1;
+	ft_itoa_p(-1,&count );
+	printf("\n");
+	int x = printf("%p", (void*) i);
+	printf("\n%d %d", x, count);
 }*/
