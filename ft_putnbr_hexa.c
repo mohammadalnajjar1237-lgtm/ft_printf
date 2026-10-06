@@ -6,7 +6,7 @@
 /*   By: moalnajj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/04 11:13:50 by moalnajj          #+#    #+#             */
-/*   Updated: 2026/10/06 14:35:03 by moalnajj         ###   ########.fr       */
+/*   Updated: 2026/10/06 15:04:13 by moalnajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int ft_putnbr_hexa(unsigned int n, char b, int *count)
     (*count)++;
     return (1);
 }
-#include <stdio.h>
+/*#include <stdio.h>
 int main()
 {
 	int i = 0;
@@ -126,4 +126,4 @@ int main()
     printf("\n");
     int x = printf("%lX", 4294967295);
     printf("\n%d %d", i, x);
-}
+}*/

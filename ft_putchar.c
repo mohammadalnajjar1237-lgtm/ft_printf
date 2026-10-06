@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putchar(char c, unsigned int *count)
+int	ft_putchar(char c, int *count)
 {
 	if (write(1, &c, 1) == -1)
 		return (-1);
