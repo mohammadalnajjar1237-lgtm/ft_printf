@@ -12,14 +12,13 @@
 #include "ft_printf.h"
 
 int	ft_putstr(char *s, int *count)
-{	
+{
 	if (s == NULL)
 	{
 		if (write(1, "(null)", 6) == -1)
 			return (-1);
 		*count += 6;
 		return (1);
-		
 	}
 	while (*s != '\0')
 	{
@@ -27,7 +26,6 @@ int	ft_putstr(char *s, int *count)
 		s++;
 		(*count)++;
 	}
-	
 	return (1);
 }
 /*int main()

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static unsigned int	turn_decimal(char *binary)
+/*static unsigned int	turn_decimal(char *binary)
 {
 	unsigned int	nbr;
 	int				i;
@@ -55,9 +55,9 @@ static char	*copy_buffer(char *buff, char *binary)
 	}
 	binary[j] = '\0';
 	return (binary);
-}
+}*/
 
-static char	*turn_binary(unsigned int n)
+/*static char	*turn_binary(unsigned int n)
 {
 	char	buffer[32];
 	char	*binary;
@@ -76,7 +76,7 @@ static char	*turn_binary(unsigned int n)
 	if (!binary)
 		return (NULL);
 	return (copy_buffer(buffer, binary));
-}
+}*/
 
 static void	choose_base(char b, char **base)
 {
@@ -88,24 +88,15 @@ static void	choose_base(char b, char **base)
 		*base = "0123456789ABCDEF";
 }
 
-int	ft_putnbr_hexa(unsigned int n, char b, int *count)
+int	ft_putnbr_hexa(unsigned int nbr, char b, int *count)
 {
-	char	*base;
-	char	c;
-	char	*binary;
+	char			*base;
+	char			c;
 
 	choose_base(b, &base);
-	if (n < 0)
-	{
-		n *= -1;
-		binary = turn_binary(n);
-		n = turn_decimal(binary);
-		n = n + 1;
-		free(binary);
-	}
-	if (n >= 16)
-		ft_putnbr_hexa(n / 16, b, count);
-	c = base[n % 16];
+	if (nbr >= 16)
+		ft_putnbr_hexa(nbr / 16, b, count);
+	c = base[nbr % 16];
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	(*count)++;
