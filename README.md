@@ -12,6 +12,7 @@ In order to use this function you should follow these steps:
 
 ## Resources
 I relied in understanding variadic functions on youtube videos such as :
+
 codeVault : https://youtu.be/oDC208zvsdg?si=Dkp1wcdrARGqWiMG
 
 Oceano : https://youtu.be/7Sph8JlRo0g?si=B8k3DAezeRHT87v1
