@@ -6,6 +6,7 @@ This project is about reimplementing pritnf (but it handles less conversions),an
 
 ## Instructions
 In order to use this function you should follow these steps:
+
 1.after cloning the repository,you run "make" command this while create a libft.a library and a libftprintf.a library.
 
 2.you should include "ft_printf.h" library.
